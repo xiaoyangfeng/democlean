@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: HEIGHT * 0.15,
+    marginBottom: HEIGHT * 0.25,
   },
   value: {
     fontSize: 40,
