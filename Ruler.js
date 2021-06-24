@@ -49,15 +49,15 @@ export default class Ruler extends Component {
     return (
       <View style={[styles.container]}>
         <ScrollView
-          automaticallyAdjustInsets={false}
           horizontal
           decelerationRate={0}
-          snapToInterval={LINE_DISTANCE}
-          snapToAlignment="start"
           showsHorizontalScrollIndicator={false}
           onScroll={e => this.onScroll(e)}
           scrollEventThrottle={100}
-          contentOffset={{x: this.state.contentOffset}}>
+          fadingEdgeLength={280}
+          contentOffset={{x: this.state.contentOffset}}
+          snapToInterval={LINE_DISTANCE}
+          snapToAlignment="start">
           <View style={[styles.horizontalline]} />
           <View style={[styles.ruler]}>{this.renderRuler()}</View>
         </ScrollView>
