@@ -6,7 +6,6 @@ const BAR_WIDTH = WIDTH - 150;
 
 const ProgressBar = props => {
   const innerWidth = BAR_WIDTH * props.percent || BAR_WIDTH * 0.25;
-  console.log(innerWidth);
   return (
     <View style={[styles.container]}>
       <View style={[styles.inner, {width: innerWidth}]} />

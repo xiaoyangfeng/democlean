@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, Button, Dimensions} from 'react-native';
+import {StyleSheet, View, Text, Pressable, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Ruler from './Ruler';
@@ -9,7 +9,6 @@ Icon.loadFont();
 const RulerPage = props => {
   const [value, setValue] = useState(34);
   const isLastPage = () => {
-    console.log(props.route.name);
     return props.route.name === '8';
   };
   return (
@@ -36,18 +35,17 @@ const RulerPage = props => {
         <View style={[styles.triangle]} />
         <Ruler onChange={setValue} />
       </View>
-      <View style={[styles.buttonContainer]}>
-        <Button
-          style={[styles.button]}
-          title={isLastPage() ? 'Submit' : 'Continue'}
-          color="white"
-          onPress={() => {
-            if (!isLastPage()) {
-              props.navigation.navigate(`${Number(props.route.name) + 1}`);
-            }
-          }}
-        />
-      </View>
+      <Pressable
+        style={[styles.buttonContainer]}
+        onPress={() => {
+          if (!isLastPage()) {
+            props.navigation.navigate(`${Number(props.route.name) + 1}`);
+          }
+        }}>
+        <Text style={[styles.buttonText]}>
+          {isLastPage() ? 'Submit' : 'Continue'}
+        </Text>
+      </Pressable>
     </View>
   );
 };
@@ -120,6 +118,11 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 50,
     borderTopRightRadius: 50,
     borderBottomRightRadius: 50,
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: 'white',
   },
 });
 
